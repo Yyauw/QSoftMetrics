@@ -21,7 +21,7 @@ export default function ReviewAnswer() {
   }, []);
 
   return (
-    <section className="flex flex-row min-h-[100vh] min-w-[100vw] bg-background text-foreground">
+    <section className="flex flex-row min-h-[100vh] max-w-[100vw] bg-background text-foreground">
       <Navbar page={2} />
 
       <main className="flex flex-col bg-slate-100 flex-1">

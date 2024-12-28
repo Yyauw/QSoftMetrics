@@ -99,6 +99,14 @@ export default function Navbar({
               <ScrollText />
               Mis Evaluaciones
             </Link>
+            <Link
+              to="/my-reviews"
+              className="flex items-center gap-2 mt-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-[#FFA726]"
+              style={{ backgroundColor: page === 3 && "#FFA726" }}
+            >
+              <ServerCog />
+              Evaluación de Código
+            </Link>
 
             <div className="">
               <div className="divider text-xs font-bold">ISO25010</div>

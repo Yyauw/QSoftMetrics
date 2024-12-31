@@ -13,10 +13,10 @@ export default function Home() {
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a className="text-xl text-white">Inicio</a>
+              <Link to='/' className="text-xl text-white">Inicio</Link>
             </li>
             <li>
-              <a className="text-xl text-white">Acceder</a>
+              <Link to='/login' className="text-xl text-white">Acceder</Link>
             </li>
           </ul>
         </div>

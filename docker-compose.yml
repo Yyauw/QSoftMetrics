@@ -1,0 +1,43 @@
+services:
+  mysql:
+    image: mysql
+    env_file: ./.env
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+    networks:
+      - app-network
+    ports:
+      - $MYSQL_EXTERNAL_PORT:$MYSQL_INTERNAL_PORT
+    healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 20s
+            retries: 10
+
+  api:
+    build: ./Api/qsoftmetrics_api
+    environment:
+      DATABASE_URL: mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@mysql:${MYSQL_INTERNAL_PORT}/${MYSQL_DATABASE}
+    networks:
+      - app-network
+    ports:
+      - 3000:3000
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  webapp:
+    build: ./Aplicacion/QSoftMetrics
+    networks:
+      - app-network
+    ports:
+      - 8080:8080
+    depends_on:
+      - api
+
+networks:
+  app-network:
+    driver: bridge

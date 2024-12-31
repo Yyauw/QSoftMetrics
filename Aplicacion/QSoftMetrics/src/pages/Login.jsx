@@ -49,6 +49,7 @@ export default function Login() {
 
   return (
     <div className="flex min-h-[100dvh] items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8 bg-[#F5F5F5]">
+      <Link to='/' className="absolute text-[#FFA726] font-bold tracking-wider top-0 left-0 mt-4 ml-4 flex items-center">X Salir</Link>
       <div className="mx-auto w-full max-w-md space-y-8 ">
         <div>
           <div className="flex items-center justify-center">

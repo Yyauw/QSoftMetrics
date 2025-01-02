@@ -18,7 +18,8 @@ export default function Login() {
     e.preventDefault();
     console.log(data);
     //peticion a la api
-    fetch("http://localhost:3000/api/login", {
+    fetch(process.env.API_URL || 
+ "http://localhost:3000" + "/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

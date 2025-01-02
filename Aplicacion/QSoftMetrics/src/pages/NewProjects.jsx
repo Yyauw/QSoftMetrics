@@ -46,7 +46,8 @@ export default function NewProjects() {
     const stringCategories = JSON.stringify(categories);
     console.log(userId);
     //hacemos la peticion
-    fetch("http://localhost:3000/api/software", {
+    fetch(process.env.API_URL || 
+ "http://localhost:3000" + "/api/software", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

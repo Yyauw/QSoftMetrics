@@ -57,7 +57,8 @@ export default function ResultFeedback() {
     },
   ];
   const fetchSoftware = async () => {
-    const res = await fetch("http://localhost:3000/api/software/" + id);
+    const res = await fetch(process.env.API_URL || 
+ "http://localhost:3000" + "/api/software/" + id);
     const data = await res.json();
     //console.log(data);
     setSoftware(data);
@@ -65,7 +66,8 @@ export default function ResultFeedback() {
 
   const fetchFeedback = async (param = "Adecuación Funcional") => {
     const res = await fetch(
-      "http://localhost:3000/api/resultados/" + id + "/" + param
+      process.env.API_URL || 
+ "http://localhost:3000" + "/api/resultados/" + id + "/" + param
     );
     const data = await res.json();
     setFeedback(data);

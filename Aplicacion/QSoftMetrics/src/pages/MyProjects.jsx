@@ -40,7 +40,8 @@ export default function MyProjects() {
   const cargarProyectos = async () => {
     const userId = await getUserId();
     const res = await fetch(
-      "http://localhost:3000/api/software/user/" + userId
+      process.env.API_URL || 
+ "http://localhost:3000" + "/api/software/user/" + userId
     );
     const data = await res.json();
     setProyectos(data);
@@ -48,7 +49,8 @@ export default function MyProjects() {
 
   const borrarProyecto = async (id) => {
     console.log(id);
-    const res = await fetch("http://localhost:3000/api/software/" + id, {
+    const res = await fetch(process.env.API_URL || 
+ "http://localhost:3000" + "/api/software/" + id, {
       method: "DELETE",
     });
     const data = await res.json();

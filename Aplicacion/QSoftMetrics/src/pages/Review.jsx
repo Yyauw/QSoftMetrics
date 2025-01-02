@@ -7,7 +7,8 @@ export default function Review() {
   const [software, setSoftware] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/software/")
+    fetch(process.env.API_URL || 
+ "http://localhost:3000" + "/api/software/")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

@@ -18,7 +18,8 @@ export default function MyReviews() {
   const fetchMyReviewedSoftware = async () => {
     const userId = await getUserId();
     const res = await fetch(
-      "http://localhost:3000/api/software/evaluaciones/" + userId
+      process.env.API_URL || 
+ "http://localhost:3000" + "/api/software/evaluaciones/" + userId
     );
     const data = await res.json();
     console.log(data);

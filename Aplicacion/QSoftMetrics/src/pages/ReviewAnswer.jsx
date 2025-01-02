@@ -9,7 +9,8 @@ export default function ReviewAnswer() {
 
   const fetchFeedback = async () => {
     const res = await fetch(
-      "http://localhost:3000/api/software/respuestas/" + id
+      process.env.API_URL || 
+ "http://localhost:3000" + "/api/software/respuestas/" + id
     );
     const data = await res.json();
     console.log(data);

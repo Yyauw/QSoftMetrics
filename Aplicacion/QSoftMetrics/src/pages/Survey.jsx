@@ -13,14 +13,16 @@ export default function Survey() {
   const [softwareCat, setSoftwareCat] = useState([]);
 
   const fetchPreguntas = async () => {
-    const res = await fetch("http://localhost:3000/api/preguntas");
+    const res = await fetch(process.env.API_URL || 
+ "http://localhost:3000" + "/api/preguntas");
     const data = await res.json();
     console.log("fechiando");
     setPreguntas(data);
   };
 
   const fetchSoftware = async () => {
-    const res = await fetch("http://localhost:3000/api/software/" + id);
+    const res = await fetch(process.env.API_URL || 
+ "http://localhost:3000" + "/api/software/" + id);
     const data = await res.json();
     //console.log(data);
     setSoftware(data);
@@ -89,7 +91,8 @@ export default function Survey() {
   const submitAnswer = async (categoria) => {
     console.log("creando encuesta");
     const userId = await getUserId();
-    const res = await fetch("http://localhost:3000/api/survey", {
+    const res = await fetch(process.env.API_URL || 
+ "http://localhost:3000" + "/api/survey", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -116,7 +119,8 @@ export default function Survey() {
       };
     });
     console.log(ansData);
-    const res = await fetch("http://localhost:3000/api/respuesta", {
+    const res = await fetch(process.env.API_URL || 
+ "http://localhost:3000" + "/api/respuesta", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

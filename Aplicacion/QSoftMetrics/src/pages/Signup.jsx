@@ -19,7 +19,8 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(data);
-    fetch("http://localhost:3000/api/signup", {
+    fetch(process.env.API_URL || 
+ "http://localhost:3000" + "/api/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
